@@ -30,7 +30,7 @@ int writeFb(gdImagePtr img, int img_width, int img_height) {
   int fd = open("/dev/fb0", O_RDWR);
   struct fb_var_screeninfo screeninfo;
   int bitspp, bytespp, fb_width, fb_height, d_width, d_height;
-  unsigned int *fb_data;
+  unsigned int* fb_data;
 
   ioctl(fd, FBIOGET_VSCREENINFO, &screeninfo);
   bitspp = screeninfo.bits_per_pixel;
@@ -80,7 +80,7 @@ int main(int argc, char** argv) {
   bg_height = gdImageSY(bg_img);
 
   if (writeFb(bg_img, bg_width, bg_height)) {
-    printf("Could not write the image to the frame buffer.");
+    printf("Could not write the image to the frame buffer.\n");
   }
 
   gdImageDestroy(bg_img);
